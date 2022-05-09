@@ -4,9 +4,11 @@ from scrapy import signals
 class PepParseSpiderMiddleware:
     @classmethod
     def from_crawler(cls, crawler):
-        s = cls()
-        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
-        return s
+        middleware = cls()
+        crawler.signals.connect(
+            middleware.spider_opened, signal=signals.spider_opened
+        )
+        return middleware
 
     def process_spider_input(self, response, spider):
         return None
@@ -29,9 +31,11 @@ class PepParseSpiderMiddleware:
 class PepParseDownloaderMiddleware:
     @classmethod
     def from_crawler(cls, crawler):
-        s = cls()
-        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
-        return s
+        middleware = cls()
+        crawler.signals.connect(
+            middleware.spider_opened, signal=signals.spider_opened
+        )
+        return middleware
 
     def process_request(self, request, spider):
         return None
